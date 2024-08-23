@@ -28,3 +28,9 @@ jobs:
         run: ./gradlew applyPatches
       - name: Build
         run: ./gradlew build
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifacts-${{ steps.ref.outputs.branch }}
+          path: |
+            build/libs/*.jar
